@@ -9,7 +9,10 @@
 """
 
 class Person(object):
-    # 开始书写我们的构造方法
+    # 开始实现定义我们的类属性
+    num = 100
+
+    # 开始书写我们的构造方法，同时定义实例属性
     def __init__(self, name, age, stu_num, *args, **kwargs):
         """
         构造方法的书写
@@ -53,8 +56,36 @@ class Person(object):
         """
         print(f"{self.name}具有学习能力")
 
+    @classmethod
+    def method_demo(cls):
+        """
+        这个是一个类方法
+        :return:
+        """
+        print("这是一个类方法")
+        print(f"实例属性为:{cls.num}")
+
+    @staticmethod
+    def static_method_demo():
+        """
+        这个是一个静态方法
+        :return:
+        """
+        print("这个是一个静态方法")
+
+
+
 if __name__ == "__main__":
     # 实现的是创建一个实例对象
     stu = Person("76433", 18, 13002307)
     stu.running()
     stu.study()
+
+    # 实现通过我们的类名和实例对象名调用我们的类方法
+    Person.method_demo()
+    stu.method_demo()
+    print(Person.method_demo == stu.method_demo)  # True
+
+    # 开始通过我们的类名和实例对象名来调用我们的静态方法
+    Person.static_method_demo()
+    stu.static_method_demo()
